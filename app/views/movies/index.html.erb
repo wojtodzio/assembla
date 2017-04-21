@@ -1,0 +1,10 @@
+<div class="row">
+  <% @movies.each do |movie| %>
+  <% p movie %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to movie.friendly_name, movie_path(movie.id) %>
+      </div>
+    </div>
+  <% end %>
+</div>
