@@ -27,7 +27,7 @@ module Managers
     end
 
     def destroy(id)
-      record, errors = repository.destroy(params)
+      record, errors = repository.destroy(id)
       return movie_from(record), errors
     end
 

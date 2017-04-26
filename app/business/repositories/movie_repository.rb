@@ -30,7 +30,7 @@ module Repositories
     end
 
     def destroy(id)
-      @orm.destroy(id)
+      record = @orm.destroy(id)
       return record, error_list(record)
     end
 

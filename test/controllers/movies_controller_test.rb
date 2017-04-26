@@ -5,6 +5,11 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
     @movie = movies(:one)
   end
 
+  test "should search in movies" do
+    get search_movies_url, params: { search: 'myTitle'}
+    assert_response :success
+  end
+
   test "should get index" do
     get movies_url
     assert_response :success
