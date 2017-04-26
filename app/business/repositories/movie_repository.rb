@@ -4,6 +4,10 @@ module Repositories
       @orm = orm
     end
 
+    def search(query)
+      @orm.where("title LIKE ?", "%#{query}%")
+    end
+
     def all
       @orm.all
     end

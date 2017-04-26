@@ -5,8 +5,14 @@
       <a class='nav-link' href='<%= new_movie_path %>'>New Movie <span class='sr-only'>(current)</span></a>
     </li>
   </ul>
-  <form class='form-inline pull-xs-right'>
-    <input class='form-control' type='text' placeholder='Search'>
-    <button class='btn btn-success-outline' type='submit'>Search</button>
-  </form>
+
+  <%= form_tag :search_movies, method: :get, class: "form-inline pull-xs-right" do %>
+    <%= text_field_tag(
+        :search,
+        @query,
+        placeholder: "Search",
+        class: "form-control"
+    ) %>
+    <%= submit_tag "Search", class: 'btn btn-success-outline' %>
+  <% end %>
 </nav>

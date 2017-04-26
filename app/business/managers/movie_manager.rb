@@ -5,6 +5,10 @@ module Managers
       Entities::Movie.new
     end
 
+    def search(query)
+      repository.search(query).map { |record| movie_from(record) }
+    end
+
     def all
       repository.all.map { |record| movie_from(record) }
     end

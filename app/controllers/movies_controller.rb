@@ -3,6 +3,12 @@ class MoviesController < ApplicationController
     @movies = movie_manager.all
   end
 
+  def search
+    @query = params[:search]
+    @movies = movie_manager.search(@query)
+    render :index
+  end
+
   def show
     @movie, @errors = movie_manager.find(params[:id])
 

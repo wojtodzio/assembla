@@ -1,4 +1,4 @@
-<%= form_for(:movie, method: movie.id ? 'put' : 'post', url: { action: movie.id ? 'update' : 'create' }) do |f| %>
+<%= form_for(:movie, method: movie.try(:id) ? 'put' : 'post', url: { action: movie.try(:id) ? 'update' : 'create' }) do |f| %>
   <% if errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(errors.count, "error") %> prohibited this movie from being saved:</h2>
