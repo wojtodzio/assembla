@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: %i[new create]
+
   root 'movies#index'
 end

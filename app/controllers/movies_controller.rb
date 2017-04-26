@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @errors.any?
         format.html { render :new }
-        format.json { reposnd_with_json_errors(@errors) }
+        format.json { respond_with_json_errors(@errors) }
       else
         format.html { redirect_to movie_url(@movie.id), notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: movie_url(@movie.id) }
@@ -46,7 +46,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @errors.any?
         format.html { render :edit }
-        format.json { reposnd_with_json_errors(@errors) }
+        format.json { respond_with_json_errors(@errors) }
       else
         format.html { redirect_to movie_url(@movie.id), notice: 'Movie was successfully updated.' }
         format.json { render :show, status: :ok, location: movie_url(@movie.id) }
@@ -69,11 +69,11 @@ class MoviesController < ApplicationController
   def redirect_to_index_with_errors(errors)
     respond_to do |format|
       format.html { redirect_to movies_url, errors: errors }
-      format.json { reposnd_with_json_errors(errors) }
+      format.json { respond_with_json_errors(errors) }
     end
   end
 
-  def reposnd_with_json_errors(errors)
+  def respond_with_json_errors(errors)
     render json: errors, status: :unprocessable_entity
   end
 
