@@ -1,20 +1,16 @@
 module Managers
-  class MovieManager
+  class UserManager
     def new
-      Entities::Movie.new
-    end
-
-    def search(query)
-      repository.search(query).map { |record| movie_from(record) }
+      Entities::User.new
     end
 
     def all
-      repository.all.map { |record| movie_from(record) }
+      repository.all.map { |record| user_from(record) }
     end
 
-    def find(params)
-      record, errors = repository.find(params)
-      return movie_from(record), errors
+    def find(id)
+      record, errors = repository.find(id)
+      return user_from(record), errors
     end
 
     def create(params)
@@ -27,7 +23,7 @@ module Managers
 
     def destroy(id)
       record, errors = repository.destroy(id)
-      return movie_from(record), errors
+      return user_from(record), errors
     end
 
     private
@@ -38,21 +34,21 @@ module Managers
 
       record, errors = block.call
 
-      return movie_from(record), errors
+      return user_from(record), errors
     end
 
     def repository
-      @repository ||= Repositories::MovieRepository.new(Movie)
+      @repository ||= Repositories::UserRepository.new(User)
     end
 
     def validator
-      @validator ||= Validators::MovieValidator.new
+      @validator ||= Validators::UserValidator.new
     end
 
-    def movie_from(record)
+    def user_from(record)
       params = record.attributes
 
-      Entities::Movie.new(params)
+      Entities::User.new(params)
     end
   end
 end

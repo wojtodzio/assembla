@@ -1,6 +1,6 @@
 module Validators
-  class MovieValidator
-    WHITE_LIST = %i[title duration director rating description]
+  class UserValidator
+    WHITE_LIST = %i[username password]
 
     def call(params)
       return false if params.nil?
